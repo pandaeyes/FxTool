@@ -1,0 +1,13 @@
+*.class
+*.sh
+*.bat
+dist/*
+build/*
+bin/*
+bin/**/*.class
+Thumbs.db
+.settings/
+.settings/*
+mod_config.xml
+selfconfig.xml
+.tool_history

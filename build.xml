@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="FxTool" default="dist">
+   <target name="clean">
+        <echo>==============</echo>
+        <echo> FxTool.Client: clean </echo>
+        <echo>==============</echo>
+        <delete dir="${basedir}/dist" />
+        <delete dir="${basedir}/build" />
+    </target>
+    
+    <target name="init" depends="clean">
+        <echo>=============</echo>
+        <echo> FxTool.Client: init </echo>
+        <echo>=============</echo>
+        <mkdir dir="${basedir}/dist" />
+        <mkdir dir="${basedir}/build" />
+        <mkdir dir="${basedir}/build/classes" />
+    </target>
+    
+    <target name="compile" depends="init">
+        <echo>================</echo>
+        <echo> FxTool: compile </echo>
+        <echo>================</echo>
+    	<tstamp>
+            <format property="today" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+    	<echo file="${basedir}/build/version.txt" message="${today}"/>
+        <javac debug="on" destdir="${basedir}/build/classes" includeantruntime="on">
+            <src path="${basedir}/src"/>
+        </javac>
+    </target>
+    
+    <target name="dist" depends="compile">
+        <echo>=============</echo>
+        <echo> FxTool: dist </echo>
+        <echo>=============</echo>
+        <jar destfile="${basedir}/build/FxTool.jar" manifest="${basedir}/MANIFEST.MF">
+            <fileset dir="${basedir}/build/classes">
+            </fileset>
+        	<fileset file="${basedir}/build/version.txt" />
+        </jar>
+        <copy todir="${basedir}/dist">
+            <fileset file="${basedir}/build/FxTool.jar" />
+        </copy>
+    </target>
+</project>

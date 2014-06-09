@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+变身说明:
+    TOOLPATH tools程工根目录
+    SRVPATH  server程工根目录
+    CLIENTPATH client程工根目录
+    DATAPATH 策划文件
+-->
+<modules>
+	<module name = "shop_data" desc = "商城表">
+        <cmd_copy_data>
+            copy shop_data.xml %TOOLPATH%\convert\data\
+        </cmd_copy_data>
+        <cmd_convert>
+            %PHP% convert2.php shop_data 
+        </cmd_convert>
+        <cmd_copy_target_server>
+            copy %TOOLPATH%\convert\target\shop_data.erl %SRVPATH%\src\mod\shop\
+        </cmd_copy_target_server>
+        <cmd_copy_target_client>
+        </cmd_copy_target_client>
+	</module>
+</modules>
