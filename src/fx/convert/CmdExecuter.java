@@ -18,7 +18,7 @@ public class CmdExecuter {
 
 	public static CmdExecuter getInstance(JTextArea runInfo) {
 		if (exec == null) {
-			exec = new CmdExecuter(runInfo);
+		    exec = new CmdExecuter(runInfo);
 		}
 		return exec;
 	}
